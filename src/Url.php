@@ -13,6 +13,8 @@ class Url
     {
         $path = $url;
         $queryParams = [];
+
+        // Parse the path
         if (strpos($url, '?') !== false) {
             list($path, $queryString) = explode('?', $url, 2);
             parse_str($queryString, $queryParams);
@@ -22,16 +24,9 @@ class Url
         $queryParams = array_replace($queryParams, $params);
 
         // Remove any keys with null values
-        $queryParams = array_filter($queryParams, function ($v) {
-            return isset($v);
-        });
+        $queryParams = array_filter($queryParams, function ($v) { return isset($v); });
 
-        // Build the query string like http_build_str would
-        $query = [];
-        foreach ($queryParams as $k => $v) {
-            $query[] = rawurlencode($k) . '=' . rawurlencode($v);
-        }
-
-        return $path . ($query ? '?' . implode('&', $query) : '');
+        // Return the built url
+        return $path . ($queryParams ? '?' . http_build_query($queryParams, '', '&', PHP_QUERY_RFC1738) : '');
     }
 }
