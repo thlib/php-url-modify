@@ -54,4 +54,11 @@ final class UrlTest extends TestCase
         $url = Url::modifyQuery($url, ['a'=>3]);
         self::assertSame('/?a=3&b=2', $url);
     }
+
+    public function testSpaceEncoding(): void
+    {
+        $url = '/?a=1&b=2';
+        $url = Url::modifyQuery($url, ['c'=>'hello world']);
+        self::assertSame('/?a=1&b=2&c=hello%20world', $url);
+    }
 }

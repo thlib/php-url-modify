@@ -27,6 +27,6 @@ class Url
         $queryParams = array_filter($queryParams, function ($v) { return isset($v); });
 
         // Return the built url
-        return $path . ($queryParams ? '?' . http_build_query($queryParams, '', '&', PHP_QUERY_RFC1738) : '');
+        return $path . ($queryParams ? '?' . http_build_query($queryParams, '', '&', PHP_QUERY_RFC3986) : '');
     }
 }
