@@ -1,6 +1,6 @@
 <?php
 
-namespace TH\Url;
+namespace TH\UrlModify;
 
 class Url
 {
