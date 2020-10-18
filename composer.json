@@ -1,5 +1,5 @@
 {
-    "name": "thlib/php-url",
+    "name": "thlib/php-url-modify",
     "version": "1.0.0",
     "description": "A simple URL helper.",
     "license": "Unlicense",
@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "TH\\Url\\": "src/"
+            "TH\\UrlModify\\": "src/"
         }
     }
 }
