@@ -30,7 +30,7 @@ class Url
         return $path . ($queryParams ? '?' . http_build_query($queryParams, '', '&', PHP_QUERY_RFC3986) : '');
     }
     
-    public static function modifyAnchor(string $url, string $anchor): string
+    public static function modifyAnchor(string $url, string $anchor = null): string
     {
         $pos = strpos($url, '#');
         if ($pos !== false) {
