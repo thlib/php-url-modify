@@ -36,6 +36,6 @@ class Url
         if ($pos !== false) {
             $url = strstr($url, '#', true);
         }
-        return $url . ($anchor ? '#' . $anchor: '');
+        return $url . (isset($anchor) ? '#' . $anchor: '');
     }
 }
