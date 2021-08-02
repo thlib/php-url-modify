@@ -61,4 +61,25 @@ final class UrlTest extends TestCase
         $url = Url::modifyQuery($url, ['c'=>'hello world']);
         self::assertSame('/?a=1&b=2&c=hello%20world', $url);
     }
+    
+    public function testAnchorOld(): void
+    {
+        $url = '/?a=1&b=2#oldanchor';
+        $url = Url::modifyAnchor($url, 'myanchor');
+        self::assertSame('/?a=1&b=2#myanchor', $url);
+    }
+    
+    public function testAnchorNew(): void
+    {
+        $url = '/?a=1&b=2';
+        $url = Url::modifyAnchor($url, 'myanchor');
+        self::assertSame('/?a=1&b=2#myanchor', $url);
+    }
+    
+    public function testAnchorRemove(): void
+    {
+        $url = '/?a=1&b=2#oldanchor';
+        $url = Url::modifyAnchor($url, null);
+        self::assertSame('/?a=1&b=2', $url);
+    }
 }
